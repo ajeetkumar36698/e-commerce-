@@ -1,0 +1,33 @@
+{% extends 'shop/base.html' %}
+{% load static %}
+{% block title %}Login{% endblock title %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h1>Login</h1>
+                </div>
+                <div class="card-body">
+                    <form action="" class="fm" novalidate="true" method="POST">
+                        {% csrf_token %}
+                        {% for i in form %}
+                            <div class="form-group">
+                                {{i.label_tag}} {{i}} 
+                                <small class="text-danger">{{i.errors|striptags}}</small>
+                            </div>
+                        {% endfor %}
+                        <input type="submit" value="Login" class="btn btn-primary">
+                    </form>
+                </div>
+                <div class="card-footer text-center">
+                    <a href="{% url 'password_reset' %}" class="btn btn-link">Forgot Password</a>
+                    <a href="{% url 'sign' %}" class="btn btn-link">Create an Account</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

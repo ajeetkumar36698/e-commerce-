@@ -1,0 +1,65 @@
+{% extends 'shop/base.html' %}
+{% load static %}
+{% block title %}Profile{% endblock title %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row">
+        <!-- Profile Sidebar -->
+        <div class="col-md-3 mb-4">
+            <div class="list-group">
+                <a href="#" class="list-group-item list-group-item-action">Overview</a>
+                <a href="#" class="list-group-item list-group-item-action">Edit Profile</a>
+                <a href="#" class="list-group-item list-group-item-action">My Orders</a>
+                <a href="{% url 'address' %}" class="list-group-item list-group-item-action">Address </a>
+                <a href="#" class="list-group-item list-group-item-action">Settings</a>
+            </div>
+        </div>
+
+        <!-- Profile Main Content -->
+        <div class="col-md-9">
+            <!-- Profile Overview -->
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">Profile Overview</h5>
+                    <div class="row">
+                        <div class="col-md-4 text-center">
+                            <img src="{% static 'images/default-profile.jpg' %}" alt="Profile Picture" class="img-fluid rounded-circle" style="width: 150px; height: 150px;">
+                        </div>
+                        <div class="col-md-8">
+                            <h4>{{ user.username }}</h4>
+                            <p>Email: {{ user.email }}</p>
+                            <p>Joined: {{ user.date_joined|date:"F d, Y" }}</p>
+                            <a href="#" class="btn btn-primary">Edit Profile</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Profile Details or Updates Form -->
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">Edit Profile</h5>
+                    <form method="POST" action="#">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="username" class="form-label">Username</label>
+                            <input type="text" class="form-control" id="username" name="username" value="{{ user.username }}" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email address</label>
+                            <input type="email" class="form-control" id="email" name="email" value="{{ user.email }}" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="password" name="password">
+                            <small class="form-text text-muted">Leave empty to keep current password.</small>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Update Profile</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

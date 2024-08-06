@@ -1,0 +1,36 @@
+{% extends 'shop/base.html' %}
+{% load static %}
+{% block title %}Sign in{% endblock title %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header text-center">
+                    <h2>Sign in</h2>
+                </div>
+                <div class="card-body">
+                    <form action="" method="POST" class="fm" novalidate>
+                        {% csrf_token %}
+                        {% for i in form %}
+                            <div class="form-group">
+                                {{ i.label_tag }} {{ i }}
+                                <small class="text-danger">{{ i.errors|striptags }}</small>
+                            </div>
+                        {% endfor %}
+                        <input type="submit" value="SignUp" class="btn btn-primary btn-block">
+                    </form>
+                </div>
+                <div class="card-footer text-center">
+                    {% if messages %}
+                        {% for message in messages %}
+                            <p class="text-danger">{{ message }}</p>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,40 @@
+{% extends 'shop/base.html' %}
+{% load static %}
+{% block title %}Address{% endblock title %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2 class="mb-4">My Addresses</h2>
+
+    <!-- Display Addresses -->
+    <div class="row">
+        {% for i in add %}
+        <div class="col-md-6 col-lg-4 mb-4">
+            <div class="card p-3">
+                <h5 class="card-title">Address {{ forloop.counter }}</h5>
+                <div class="card-body">
+                    <p class="card-text"><strong>Name:</strong> {{ i.name }}</p>
+                    <p class="card-text"><strong>Locality:</strong> {{ i.locality }}</p>
+                    <p class="card-text"><strong>City:</strong> {{ i.city }}</p>
+                    <p class="card-text"><strong>State:</strong> {{ i.state }}</p>
+                    <p class="card-text"><strong>Zip Code:</strong> {{ i.zipcode }}</p>
+                </div>
+                <div class="card-footer text-center">
+                    <a href="#" class="btn btn-primary">Edit</a>
+                    <a href="#" class="btn btn-danger">Delete</a>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <div class="col-12">
+            <p class="text-center">No addresses found.</p>
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- Add New Address Button -->
+    <div class="text-center mt-4">
+        <a href="#" class="btn btn-success">Add New Address</a>
+    </div>
+</div>
+{% endblock content %}

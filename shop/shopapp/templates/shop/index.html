@@ -1,0 +1,118 @@
+{% extends 'shop/base.html' %}
+{% load static %}
+{% block title %}Home{% endblock title %}
+
+
+{% block content %} 
+
+<div class="hero-section">
+    <img src="{% static 'images/hero-image.jpg' %}" alt="" class="hero-section">
+</div>
+
+<h2>Bottom Wears</h2>
+<div class="shop-section">
+
+    {% for i in bottomwears %}
+    <div class="box1 box">
+
+
+        <div class="box-content">
+            <a href="{% url 'product_details' i.id  %}">
+            <img src="{{i.product_image.url}}" alt="" class="box-img"><br><br>
+        </a>
+            <h5>{{i.brand }}</h5>
+
+            <p style="color: green;"><b>Price: {{i.selling_price}}</b></p>
+            
+
+
+        </div>
+
+    </div>
+    {% endfor %}
+
+</div>
+
+
+
+<h2>Mobiles</h2>
+
+<div class="shop-section">
+    {% for i in mobiles %}
+    <div class="box1 box">
+
+
+        <div class="box-content">
+            <a href="{% url 'product_details' i.id  %}">
+            <img src="{{i.product_image.url}}" alt="" class="box-img"><br><br>
+        </a>
+            <h5>{{i.brand }}</h5>
+
+            <p style="color: green;"><b>Price: {{i.selling_price}}</b></p>
+            
+
+
+        </div>
+
+    </div>
+    {% endfor %}
+</div>
+
+
+<h2>Laptop</h2>
+
+
+<div class="shop-section">
+    {% for i in laptop %}
+
+    <div class="box1 box">
+
+
+        <div class="box-content">
+            <a href="{% url 'product_details' i.id  %}">
+            <img src="{{i.product_image.url}}" alt="" class="box-img"><br><br>
+        </a>
+            <h5>{{i.brand }}</h5>
+
+            <p style="color: green;"><b>Price: {{i.selling_price}}</b></p>
+            
+
+
+        </div>
+
+    </div>
+    {% endfor %}
+</div>
+
+<h2>Top Wears</h2>
+<div class="shop-section">
+
+    {% for i in topwears %}
+    <div class="box1 box">
+
+
+        <div class="box-content">
+            <a href="{% url 'product_details' i.id  %}">
+            <img src="{{i.product_image.url}}" alt="" class="box-img"><br><br>
+        </a>
+            <h5>{{i.brand }}</h5>
+
+            <p style="color: green;"><b>Price: {{i.selling_price}}</b></p>
+            
+
+
+        </div>
+
+    </div>
+    {% endfor %}
+
+</div>
+
+
+
+
+
+
+{% endblock content %}
+
+
